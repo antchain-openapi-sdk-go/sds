@@ -9,9 +9,9 @@ import (
 	"io"
 )
 
-/**
- * Model for initing client
- */
+// Description:
+//
+// Model for initing client
 type Config struct {
 	// accesskey id
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
@@ -20,26 +20,66 @@ type Config struct {
 	// security token
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
 	// http protocol
+	//
+	// example:
+	//
+	// http
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// read timeout
+	//
+	// example:
+	//
+	// 10
 	ReadTimeout *int `json:"readTimeout,omitempty" xml:"readTimeout,omitempty"`
 	// connect timeout
+	//
+	// example:
+	//
+	// 10
 	ConnectTimeout *int `json:"connectTimeout,omitempty" xml:"connectTimeout,omitempty"`
 	// http proxy
+	//
+	// example:
+	//
+	// http://localhost
 	HttpProxy *string `json:"httpProxy,omitempty" xml:"httpProxy,omitempty"`
 	// https proxy
+	//
+	// example:
+	//
+	// https://localhost
 	HttpsProxy *string `json:"httpsProxy,omitempty" xml:"httpsProxy,omitempty"`
 	// endpoint
+	//
+	// example:
+	//
+	// cs.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// proxy white list
+	//
+	// example:
+	//
+	// http://localhost
 	NoProxy *string `json:"noProxy,omitempty" xml:"noProxy,omitempty"`
 	// max idle conns
+	//
+	// example:
+	//
+	// 3
 	MaxIdleConns *int `json:"maxIdleConns,omitempty" xml:"maxIdleConns,omitempty"`
 	// user agent
+	//
+	// example:
+	//
+	// Alibabacloud/1
 	UserAgent *string `json:"userAgent,omitempty" xml:"userAgent,omitempty"`
 	// socks5 proxy
 	Socks5Proxy *string `json:"socks5Proxy,omitempty" xml:"socks5Proxy,omitempty"`
 	// socks5 network
+	//
+	// example:
+	//
+	// TCP
 	Socks5NetWork *string `json:"socks5NetWork,omitempty" xml:"socks5NetWork,omitempty"`
 	// 长链接最大空闲时长
 	MaxIdleTimeMillis *int `json:"maxIdleTimeMillis,omitempty" xml:"maxIdleTimeMillis,omitempty"`
@@ -152,10 +192,19 @@ func (s *Config) SetMaxRequestsPerHost(v int) *Config {
 // 【固定折扣特定信息】
 type FixedDiscountCoupon struct {
 	// 【最高折扣金额】 最高折扣金额，单位分
+	// example:
+	//
+	// 100
 	DiscountAmountMax *int64 `json:"discount_amount_max,omitempty" xml:"discount_amount_max,omitempty" require:"true"`
 	// 【折扣百分比】 折扣百分比，例如88-八八折
+	// example:
+	//
+	// 88
 	DiscountPercent *int64 `json:"discount_percent,omitempty" xml:"discount_percent,omitempty" require:"true"`
 	// 【门槛】 使用券金额门槛，单位分
+	// example:
+	//
+	// 100
 	TransactionMinimum *int64 `json:"transaction_minimum,omitempty" xml:"transaction_minimum,omitempty"`
 }
 
@@ -185,8 +234,14 @@ func (s *FixedDiscountCoupon) SetTransactionMinimum(v int64) *FixedDiscountCoupo
 // 【固定面额批次特定信息】 固定面额发券或消费金批次特定信息。
 type FixedNormalCoupon struct {
 	// 【面额】 面额，单位：分。
+	// example:
+	//
+	// 100
 	CouponAmount *int64 `json:"coupon_amount,omitempty" xml:"coupon_amount,omitempty" require:"true"`
 	// 【门槛】 使用券金额门槛，单位：分。
+	// example:
+	//
+	// 100
 	TransactionMinimum *int64 `json:"transaction_minimum,omitempty" xml:"transaction_minimum,omitempty" require:"true"`
 }
 
@@ -211,8 +266,14 @@ func (s *FixedNormalCoupon) SetTransactionMinimum(v int64) *FixedNormalCoupon {
 // 返回体度量
 type RultMetric struct {
 	// 度量编码
+	// example:
+	//
+	// ori_use_amount
 	MetricCode *string `json:"metric_code,omitempty" xml:"metric_code,omitempty" require:"true"`
 	// 度量聚合结果
+	// example:
+	//
+	// 21.22
 	MetricValue *string `json:"metric_value,omitempty" xml:"metric_value,omitempty" require:"true"`
 }
 
@@ -237,8 +298,14 @@ func (s *RultMetric) SetMetricValue(v string) *RultMetric {
 // 【减至批次特定信息】 单品优惠特定信息
 type CutToMessage struct {
 	// 【可用优惠的商品最高单价】 可用优惠的商品最高单价，单位：分。
+	// example:
+	//
+	// 100
 	SinglePriceMax *int64 `json:"single_price_max,omitempty" xml:"single_price_max,omitempty" require:"true"`
 	// 【减至后的优惠单价】 减至后的优惠单价，单位：分。
+	// example:
+	//
+	// 80
 	CutToPrice *int64 `json:"cut_to_price,omitempty" xml:"cut_to_price,omitempty" require:"true"`
 }
 
@@ -268,14 +335,29 @@ type AvailableRegion struct {
 	// CITY:  地域信息精确到市级
 	// DISTRICT:  地域信息精确到区级
 	// COUNTRY:  地域信息精确到国家级
+	// example:
+	//
+	// PROVINCE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// 【省】 消费金可用省
+	// example:
+	//
+	// 广东省
 	Province *string `json:"province,omitempty" xml:"province,omitempty"`
 	// 【市】 消费金可用
+	// example:
+	//
+	// 深圳市
 	City *string `json:"city,omitempty" xml:"city,omitempty"`
 	// 【区】 消费金可用区
+	// example:
+	//
+	// 南山区
 	District *string `json:"district,omitempty" xml:"district,omitempty"`
 	// 【国家】 消费金可用国家
+	// example:
+	//
+	// 中国大陆
 	Country *string `json:"country,omitempty" xml:"country,omitempty"`
 }
 
@@ -315,8 +397,14 @@ func (s *AvailableRegion) SetCountry(v string) *AvailableRegion {
 // 维度
 type Dimension struct {
 	// 维度
+	// example:
+	//
+	// voucher_template_id
 	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty" require:"true"`
 	// 维度值
+	// example:
+	//
+	// 2025122400073001038200J7964H
 	DimensionValue *string `json:"dimension_value,omitempty" xml:"dimension_value,omitempty" require:"true"`
 }
 
@@ -341,22 +429,43 @@ func (s *Dimension) SetDimensionValue(v string) *Dimension {
 // 【满减券/消费金批次使用规则】 满减券或消费金批次特定信息。
 type StockUseRule struct {
 	// 【发放总上限】 最大发券数
+	// example:
+	//
+	// 100
 	MaxCoupons *int64 `json:"max_coupons,omitempty" xml:"max_coupons,omitempty" require:"true"`
 	// 【总预算】 总消耗金额，单位：分。
+	// example:
+	//
+	// 5000
 	MaxAmount *int64 `json:"max_amount,omitempty" xml:"max_amount,omitempty" require:"true"`
 	// 【单天发放上限金额】 单天最高消耗金额，单位：分。
+	// example:
+	//
+	// 400
 	MaxAmountByDay *int64 `json:"max_amount_by_day,omitempty" xml:"max_amount_by_day,omitempty" require:"true"`
 	// 【固定面额批次特定信息】 固定面额发券或消费金批次特定信息。
+	// example:
+	//
+	// {           "coupon_amount" : 100,           "transaction_minimum" : 100         }
 	FixedNormalCoupon *FixedNormalCoupon `json:"fixed_normal_coupon,omitempty" xml:"fixed_normal_coupon,omitempty" require:"true"`
 	// 【单个用户可领个数】 单个用户可领个数
+	// example:
+	//
+	// 3
 	MaxCouponsPerUser *int64 `json:"max_coupons_per_user,omitempty" xml:"max_coupons_per_user,omitempty" require:"true"`
 	// 【券或消费金类型】 券或消费金类型
 	// 枚举值：
 	// NORMAL：满减券
 	// CUT_TO：减至券
+	// example:
+	//
+	// NORMAL
 	CouponType *string `json:"coupon_type,omitempty" xml:"coupon_type,omitempty"`
 	// 【订单优惠标记】 订单优惠标记 (该字段暂未开放返回)
 	// 特殊规则：单个优惠标记的字符长度为【1，128】,条目个数限制为【1，50】。
+	// example:
+	//
+	// [           "123456"         ]
 	GoodsTag []*string `json:"goods_tag,omitempty" xml:"goods_tag,omitempty" type:"Repeated"`
 	// 【指定支付模式】默认不限制(该字段暂未开放返回)，枚举值：
 	// 可选取值
@@ -366,12 +475,21 @@ type StockUseRule struct {
 	// CARD:  刷卡支付
 	// FACE:  人脸支付
 	// OTHER:  其他支付，公众号、扫码等
+	// example:
+	//
+	// [           "MICROAPP"         ]
 	TradeType []*string `json:"trade_type,omitempty" xml:"trade_type,omitempty" type:"Repeated"`
 	// 【是否可叠加其他优惠】 枚举值：
 	// true：是
 	// false：否
+	// example:
+	//
+	// true
 	CombineUse *bool `json:"combine_use,omitempty" xml:"combine_use,omitempty"`
 	// 【固定折扣特定信息】
+	// example:
+	//
+	// {           "discount_amount_max" : 100,           "discount_percent" : 88,      "transaction_minimum" : 100         }
 	FixedDiscountCoupon *FixedDiscountCoupon `json:"fixed_discount_coupon,omitempty" xml:"fixed_discount_coupon,omitempty"`
 }
 
@@ -433,13 +551,54 @@ func (s *StockUseRule) SetFixedDiscountCoupon(v *FixedDiscountCoupon) *StockUseR
 	return s
 }
 
+// 标签
+type Tag struct {
+	// 编码
+	// example:
+	//
+	// IS_OK
+	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
+	// 值
+	// example:
+	//
+	// N
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s Tag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+func (s *Tag) SetCode(v string) *Tag {
+	s.Code = &v
+	return s
+}
+
+func (s *Tag) SetValue(v string) *Tag {
+	s.Value = &v
+	return s
+}
+
 // 【批次详情】 批次详情
 type WxStockData struct {
 	// 【批次号】 微信为每个代金券批次分配的唯一id。
+	// example:
+	//
+	// 9836588
 	StockId *string `json:"stock_id,omitempty" xml:"stock_id,omitempty" require:"true"`
 	// 【批次创建方商户号】 微信为创建方商户分配的商户号
+	// example:
+	//
+	// 123456
 	StockCreatorMchid *string `json:"stock_creator_mchid,omitempty" xml:"stock_creator_mchid,omitempty" require:"true"`
 	// 【批次名称】 批次名称
+	// example:
+	//
+	// 微信支付批次
 	StockName *string `json:"stock_name,omitempty" xml:"stock_name,omitempty" require:"true"`
 	// 【批次状态】 批次状态，枚举值：
 	// unactivated：未激活
@@ -447,49 +606,100 @@ type WxStockData struct {
 	// running：运行中
 	// stoped：已停止
 	// paused：暂停发放
+	// example:
+	//
+	// paused
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 【创建时间】 批次创建时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss.sss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示，北京时间2015年5月20日 13点29分35秒。
+	// example:
+	//
+	// 2015-05-20T13:29:35.120+08:00
 	CreateTime *string `json:"create_time,omitempty" xml:"create_time,omitempty" require:"true"`
 	// 【使用说明】 批次描述信息
+	// example:
+	//
+	// 微信支付营销
 	Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
 	// 【满减券/消费金批次使用规则】 满减券或消费金批次特定信息。
+	// example:
+	//
+	// {         "max_coupons" : 100,         "max_amount" : 5000,         "max_amount_by_day" : 400,         "fixed_normal_coupon" : {           "coupon_amount" : 100,           "transaction_minimum" : 100         }
 	StockUseRule *StockUseRule `json:"stock_use_rule,omitempty" xml:"stock_use_rule,omitempty"`
 	// 【可用开始时间】 可用开始时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss.sss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示，北京时间2015年5月20日 13点29分35秒。
+	// example:
+	//
+	// 2015-05-20T13:29:35.120+08:00
 	AvailableBeginTime *string `json:"available_begin_time,omitempty" xml:"available_begin_time,omitempty" require:"true"`
 	// 【可用结束时间】 可用结束时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss.sss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示，北京时间2015年5月20日 13点29分35秒。
+	// example:
+	//
+	// 2015-05-20T13:29:35.120+08:00
 	AvailableEndTime *string `json:"available_end_time,omitempty" xml:"available_end_time,omitempty" require:"true"`
 	// 【已发券或消费金数量】 已发券或消费金数量
+	// example:
+	//
+	// 100
 	DistributedCoupons *int64 `json:"distributed_coupons,omitempty" xml:"distributed_coupons,omitempty" require:"true"`
 	// 【是否无资金流】 是否无资金流。枚举值：
 	// true：是
 	// false：否
+	// example:
+	//
+	// true
 	NoCash *bool `json:"no_cash,omitempty" xml:"no_cash,omitempty" require:"true"`
 	// 【激活批次的时间】 批次激活开启时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss.sss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示，北京时间2015年5月20日 13点29分35秒。
+	// example:
+	//
+	// 2015-05-20T13:29:35.120+08:00
 	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
 	// 【终止批次的时间】 批次永久停止时间，遵循rfc3339标准格式，格式为yyyy-MM-DDTHH:mm:ss.sss+TIMEZONE，yyyy-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示，北京时间2015年5月20日 13点29分35秒。
+	// example:
+	//
+	// 2015-05-20T13:29:35.120+08:00
 	StopTime *string `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
 	// 【减至批次特定信息】 单品优惠特定信息
+	// example:
+	//
+	// {         "single_price_max" : 100,         "cut_to_price" : 80       }
 	CutToMessage *CutToMessage `json:"cut_to_message,omitempty" xml:"cut_to_message,omitempty"`
 	// 【是否单品优惠】 枚举值：
 	// true：是
 	// false：否
+	// example:
+	//
+	// true
 	Singleitem *bool `json:"singleitem,omitempty" xml:"singleitem,omitempty" require:"true"`
 	// 【批次类型】 批次类型
 	// 枚举值：
 	// NORMAL：代金券批次
 	// DISCOUNT_CUT：立减与折扣
 	// OTHER：其他
+	// example:
+	//
+	// NORMAL
 	StockType *string `json:"stock_type,omitempty" xml:"stock_type,omitempty" require:"true"`
 	// 【卡包ID】 微信卡包ID
+	// example:
+	//
+	// pX2-vjoeC94Nn-r2g5GjDwkfFH7E
 	CardId *string `json:"card_id,omitempty" xml:"card_id,omitempty"`
 	// 【业务类型】 细分业务类型，仅有当business_type=MULTIUSE时，才会返回，枚举值：
 	// MULTIUSE：消费金
 	// 可选取值
 	// MULTIUSE:  消费金类型
+	// example:
+	//
+	// MULTIUSE
 	BusinessType *string `json:"business_type,omitempty" xml:"business_type,omitempty"`
 	// 消费金可用地域列表，仅有当business_type=MULTIUSE时，才会返回
+	// example:
+	//
+	// [         {           "type" : "PROVINCE",           "province" : "广东省",           "city" : "深圳市",           "district" : "南山区",           "country" : "中国大陆"         }       ]
 	AvailableRegionList []*AvailableRegion `json:"available_region_list,omitempty" xml:"available_region_list,omitempty" type:"Repeated"`
 	// 【消费金可用行业】 消费金可用行业列表，仅有当business_type=MULTIUSE时，才会返回
+	// example:
+	//
+	// [         "餐饮"       ]
 	AvailableIndustryList []*string `json:"available_industry_list,omitempty" xml:"available_industry_list,omitempty" type:"Repeated"`
 }
 
@@ -604,10 +814,19 @@ func (s *WxStockData) SetAvailableIndustryList(v []*string) *WxStockData {
 // 度量
 type Metric struct {
 	// 度量编码
+	// example:
+	//
+	// ori_use_amount
 	MetricCode *string `json:"metric_code,omitempty" xml:"metric_code,omitempty" require:"true"`
 	// 计算列
+	// example:
+	//
+	// ori_use_amount
 	MetricColumn *string `json:"metric_column,omitempty" xml:"metric_column,omitempty" require:"true"`
 	// 计算方式
+	// example:
+	//
+	// SUM
 	FunctionType *string `json:"function_type,omitempty" xml:"function_type,omitempty"`
 }
 
@@ -640,11 +859,17 @@ type BizNoCondition struct {
 	// CITY 城市
 	// BLOCK 区县
 	// AGE 年龄
+	// example:
+	//
+	// 100010
 	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty" require:"true"`
 	// 枚举范围，每个维度的值是或的关系,需要校验场景和取值范围是否匹配
 	// CITY:区划码
 	// BLOCK:区划码（底包暂不支持）
 	// AGE:30+、40+、50+（底包暂不支持
+	// example:
+	//
+	// ["100010","100011","100020"]
 	ValueScope []*string `json:"value_scope,omitempty" xml:"value_scope,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -669,12 +894,24 @@ func (s *BizNoCondition) SetValueScope(v []*string) *BizNoCondition {
 // 批处理结果
 type BatchResult struct {
 	// 业务号
+	// example:
+	//
+	// 业务号
 	BizNo *string `json:"biz_no,omitempty" xml:"biz_no,omitempty" require:"true" maxLength:"64"`
 	// 业务号类型
+	// example:
+	//
+	// PHONE_SHA1
 	BizNoType *string `json:"biz_no_type,omitempty" xml:"biz_no_type,omitempty" require:"true" maxLength:"32"`
 	// 结果
+	// example:
+	//
+	// Y
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// 结果码
+	// example:
+	//
+	// rights_rights-config-not-exist
 	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
 }
 
@@ -709,14 +946,29 @@ func (s *BatchResult) SetResultCode(v string) *BatchResult {
 // 任务详细结果包含任务的统计数据信息
 type TaskDetailResult struct {
 	// 总数量
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 	// 成功数量
+	// example:
+	//
+	// 100
 	SuccessCount *int64 `json:"success_count,omitempty" xml:"success_count,omitempty"`
 	// 失败数量
+	// example:
+	//
+	// 0
 	FailCount *int64 `json:"fail_count,omitempty" xml:"fail_count,omitempty"`
 	// 处理中数量
+	// example:
+	//
+	// 0
 	ProcessingCount *int64 `json:"processing_count,omitempty" xml:"processing_count,omitempty"`
 	// 当状态为无效时，显示具体的错误信息
+	// example:
+	//
+	// xxx
 	ErrorInfo *string `json:"error_info,omitempty" xml:"error_info,omitempty"`
 }
 
@@ -782,10 +1034,19 @@ func (s *DwsResult) SetMetricList(v []*RultMetric) *DwsResult {
 // 过滤条件
 type FilterCondition struct {
 	// 过滤列
+	// example:
+	//
+	// biz_date
 	FilterColumn *string `json:"filter_column,omitempty" xml:"filter_column,omitempty" require:"true"`
 	// 过滤方式
+	// example:
+	//
+	// BETWEEN
 	FilterType *string `json:"filter_type,omitempty" xml:"filter_type,omitempty"`
 	// 值列表
+	// example:
+	//
+	// ["20240303", "20250303"]
 	ValueList []*string `json:"value_list,omitempty" xml:"value_list,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -815,8 +1076,14 @@ func (s *FilterCondition) SetValueList(v []*string) *FilterCondition {
 // 地址，包含省、市、区(县)
 type Address struct {
 	// 市级
+	// example:
+	//
+	// 110100
 	City *string `json:"city,omitempty" xml:"city,omitempty" require:"true" maxLength:"6" minLength:"6"`
 	// 区、县级
+	// example:
+	//
+	// 110101
 	District *string `json:"district,omitempty" xml:"district,omitempty" maxLength:"6" minLength:"6"`
 }
 
@@ -841,8 +1108,14 @@ func (s *Address) SetDistrict(v string) *Address {
 // 键值对
 type XNameValuePair struct {
 	// 键名
+	// example:
+	//
+	// key
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 键值
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty" require:"true"`
 }
 
@@ -1994,6 +2267,188 @@ func (s *UpdateScenedataTaskResponse) SetResultMsg(v string) *UpdateScenedataTas
 	return s
 }
 
+type GetTrackingTokenRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 客户侧用户id
+	OutUserId *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty" require:"true"`
+}
+
+func (s GetTrackingTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrackingTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrackingTokenRequest) SetAuthToken(v string) *GetTrackingTokenRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *GetTrackingTokenRequest) SetProductInstanceId(v string) *GetTrackingTokenRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *GetTrackingTokenRequest) SetOutUserId(v string) *GetTrackingTokenRequest {
+	s.OutUserId = &v
+	return s
+}
+
+type GetTrackingTokenResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 临时ak
+	AccesskeyId *string `json:"accesskey_id,omitempty" xml:"accesskey_id,omitempty"`
+	// 临时sk
+	AccesskeySecret *string `json:"accesskey_secret,omitempty" xml:"accesskey_secret,omitempty"`
+	// token
+	SecurityToken *string `json:"security_token,omitempty" xml:"security_token,omitempty"`
+	// 失效时间
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+}
+
+func (s GetTrackingTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrackingTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrackingTokenResponse) SetReqMsgId(v string) *GetTrackingTokenResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetResultCode(v string) *GetTrackingTokenResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetResultMsg(v string) *GetTrackingTokenResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetAccesskeyId(v string) *GetTrackingTokenResponse {
+	s.AccesskeyId = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetAccesskeySecret(v string) *GetTrackingTokenResponse {
+	s.AccesskeySecret = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetSecurityToken(v string) *GetTrackingTokenResponse {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *GetTrackingTokenResponse) SetExpiration(v string) *GetTrackingTokenResponse {
+	s.Expiration = &v
+	return s
+}
+
+type QueryUserTagRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 12345678
+	ChannelNo *string `json:"channel_no,omitempty" xml:"channel_no,omitempty" require:"true"`
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	// 用户id类型
+	UserIdType *string `json:"user_id_type,omitempty" xml:"user_id_type,omitempty" require:"true"`
+	// 用户访问时生成的埋点traceid
+	TraceId *string `json:"trace_id,omitempty" xml:"trace_id,omitempty" require:"true"`
+}
+
+func (s QueryUserTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserTagRequest) SetAuthToken(v string) *QueryUserTagRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryUserTagRequest) SetProductInstanceId(v string) *QueryUserTagRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryUserTagRequest) SetChannelNo(v string) *QueryUserTagRequest {
+	s.ChannelNo = &v
+	return s
+}
+
+func (s *QueryUserTagRequest) SetUserId(v string) *QueryUserTagRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryUserTagRequest) SetUserIdType(v string) *QueryUserTagRequest {
+	s.UserIdType = &v
+	return s
+}
+
+func (s *QueryUserTagRequest) SetTraceId(v string) *QueryUserTagRequest {
+	s.TraceId = &v
+	return s
+}
+
+type QueryUserTagResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 标签列表
+	TagList []*Tag `json:"tag_list,omitempty" xml:"tag_list,omitempty" type:"Repeated"`
+}
+
+func (s QueryUserTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserTagResponse) SetReqMsgId(v string) *QueryUserTagResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryUserTagResponse) SetResultCode(v string) *QueryUserTagResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryUserTagResponse) SetResultMsg(v string) *QueryUserTagResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryUserTagResponse) SetTagList(v []*Tag) *QueryUserTagResponse {
+	s.TagList = v
+	return s
+}
+
 type CreateAntcloudGatewayxFileUploadRequest struct {
 	// OAuth模式下的授权token
 	AuthToken *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -2136,10 +2591,11 @@ type Client struct {
 	MaxRequestsPerHost      *int
 }
 
-/**
- * Init client with Config
- * @param config config contains the necessary information to create a client
- */
+// Description:
+//
+// # Init client with Config
+//
+// @param config - config contains the necessary information to create a client
 func NewClient(config *Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
@@ -2147,7 +2603,7 @@ func NewClient(config *Config) (*Client, error) {
 }
 
 func (client *Client) Init(config *Config) (_err error) {
-	if tea.BoolValue(util.IsUnset(tea.ToMap(config))) {
+	if tea.BoolValue(util.IsUnset(config)) {
 		_err = tea.NewSDKError(map[string]interface{}{
 			"code":    "ParameterMissing",
 			"message": "'config' can not be unset",
@@ -2176,16 +2632,23 @@ func (client *Client) Init(config *Config) (_err error) {
 	return nil
 }
 
-/**
- * Encapsulate the request and invoke the network
- * @param action api name
- * @param protocol http or https
- * @param method e.g. GET
- * @param pathname pathname of every api
- * @param request which contains request params
- * @param runtime which controls some details of call api, such as retry times
- * @return the response
- */
+// Description:
+//
+// # Encapsulate the request and invoke the network
+//
+// @param action - api name
+//
+// @param protocol - http or https
+//
+// @param method - e.g. GET
+//
+// @param pathname - pathname of every api
+//
+// @param request - which contains request params
+//
+// @param runtime - which controls some details of call api, such as retry times
+//
+// @return the response
 func (client *Client) DoRequest(version *string, action *string, protocol *string, method *string, pathname *string, request map[string]interface{}, headers map[string]*string, runtime *util.RuntimeOptions) (_result map[string]interface{}, _err error) {
 	_err = tea.Validate(runtime)
 	if _err != nil {
@@ -2236,7 +2699,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.7.0"),
+				"sdk_version":      tea.String("1.8.0"),
 				"_prod_code":       tea.String("SDS"),
 				"_prod_channel":    tea.String("default"),
 			}
@@ -2294,10 +2757,11 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 	return _resp, _err
 }
 
-/**
- * Description: 根据人维度的业务号和城市，决定是否优待人群，业务号可以是不同类型的，可以是手机号，也可以是证件号，如果业务号是敏感数据，可以选择算法类型加密传输。
- * Summary: 优待人群判断
- */
+// Description:
+//
+// Description: 根据人维度的业务号和城市，决定是否优待人群，业务号可以是不同类型的，可以是手机号，也可以是证件号，如果业务号是敏感数据，可以选择算法类型加密传输。
+//
+// Summary: 优待人群判断
 func (client *Client) JudgeCrowdPreferment(request *JudgeCrowdPrefermentRequest) (_result *JudgeCrowdPrefermentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2310,10 +2774,11 @@ func (client *Client) JudgeCrowdPreferment(request *JudgeCrowdPrefermentRequest)
 	return _result, _err
 }
 
-/**
- * Description: 根据人维度的业务号和城市，决定是否优待人群，业务号可以是不同类型的，可以是手机号，也可以是证件号，如果业务号是敏感数据，可以选择算法类型加密传输。
- * Summary: 优待人群判断
- */
+// Description:
+//
+// Description: 根据人维度的业务号和城市，决定是否优待人群，业务号可以是不同类型的，可以是手机号，也可以是证件号，如果业务号是敏感数据，可以选择算法类型加密传输。
+//
+// Summary: 优待人群判断
 func (client *Client) JudgeCrowdPrefermentEx(request *JudgeCrowdPrefermentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *JudgeCrowdPrefermentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2328,10 +2793,11 @@ func (client *Client) JudgeCrowdPrefermentEx(request *JudgeCrowdPrefermentReques
 	return _result, _err
 }
 
-/**
- * Description: 创建任务，获取批次号。
- * Summary: 创建任务，获取批次号。
- */
+// Description:
+//
+// Description: 创建任务，获取批次号。
+//
+// Summary: 创建任务，获取批次号。
 func (client *Client) SubmitScenedataTask(request *SubmitScenedataTaskRequest) (_result *SubmitScenedataTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2344,10 +2810,11 @@ func (client *Client) SubmitScenedataTask(request *SubmitScenedataTaskRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 创建任务，获取批次号。
- * Summary: 创建任务，获取批次号。
- */
+// Description:
+//
+// Description: 创建任务，获取批次号。
+//
+// Summary: 创建任务，获取批次号。
 func (client *Client) SubmitScenedataTaskEx(request *SubmitScenedataTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitScenedataTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2362,10 +2829,11 @@ func (client *Client) SubmitScenedataTaskEx(request *SubmitScenedataTaskRequest,
 	return _result, _err
 }
 
-/**
- * Description: 批次数据文件上传
- * Summary: 批次数据文件上传
- */
+// Description:
+//
+// Description: 批次数据文件上传
+//
+// Summary: 批次数据文件上传
 func (client *Client) UploadScenedataFile(request *UploadScenedataFileRequest) (_result *UploadScenedataFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2378,10 +2846,11 @@ func (client *Client) UploadScenedataFile(request *UploadScenedataFileRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 批次数据文件上传
- * Summary: 批次数据文件上传
- */
+// Description:
+//
+// Description: 批次数据文件上传
+//
+// Summary: 批次数据文件上传
 func (client *Client) UploadScenedataFileEx(request *UploadScenedataFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadScenedataFileResponse, _err error) {
 	if !tea.BoolValue(util.IsUnset(request.FileObject)) {
 		uploadReq := &CreateAntcloudGatewayxFileUploadRequest{
@@ -2426,10 +2895,11 @@ func (client *Client) UploadScenedataFileEx(request *UploadScenedataFileRequest,
 	return _result, _err
 }
 
-/**
- * Description: 任务结果查询
- * Summary: 任务结果查询
- */
+// Description:
+//
+// Description: 任务结果查询
+//
+// Summary: 任务结果查询
 func (client *Client) BatchqueryScenedataTaskresult(request *BatchqueryScenedataTaskresultRequest) (_result *BatchqueryScenedataTaskresultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2442,10 +2912,11 @@ func (client *Client) BatchqueryScenedataTaskresult(request *BatchqueryScenedata
 	return _result, _err
 }
 
-/**
- * Description: 任务结果查询
- * Summary: 任务结果查询
- */
+// Description:
+//
+// Description: 任务结果查询
+//
+// Summary: 任务结果查询
 func (client *Client) BatchqueryScenedataTaskresultEx(request *BatchqueryScenedataTaskresultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchqueryScenedataTaskresultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2460,10 +2931,11 @@ func (client *Client) BatchqueryScenedataTaskresultEx(request *BatchquerySceneda
 	return _result, _err
 }
 
-/**
- * Description: 场景数据在线查询，仅支持单条匹配
- * Summary: 场景数据在线查询
- */
+// Description:
+//
+// Description: 场景数据在线查询，仅支持单条匹配
+//
+// Summary: 场景数据在线查询
 func (client *Client) QueryScenedataOnline(request *QueryScenedataOnlineRequest) (_result *QueryScenedataOnlineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2476,10 +2948,11 @@ func (client *Client) QueryScenedataOnline(request *QueryScenedataOnlineRequest)
 	return _result, _err
 }
 
-/**
- * Description: 场景数据在线查询，仅支持单条匹配
- * Summary: 场景数据在线查询
- */
+// Description:
+//
+// Description: 场景数据在线查询，仅支持单条匹配
+//
+// Summary: 场景数据在线查询
 func (client *Client) QueryScenedataOnlineEx(request *QueryScenedataOnlineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryScenedataOnlineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2494,10 +2967,11 @@ func (client *Client) QueryScenedataOnlineEx(request *QueryScenedataOnlineReques
 	return _result, _err
 }
 
-/**
- * Description: 通过批次号查询任务详细信息
- * Summary: 通过批次号查询任务详细信息
- */
+// Description:
+//
+// Description: 通过批次号查询任务详细信息
+//
+// Summary: 通过批次号查询任务详细信息
 func (client *Client) QueryScenedataTaskinfo(request *QueryScenedataTaskinfoRequest) (_result *QueryScenedataTaskinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2510,10 +2984,11 @@ func (client *Client) QueryScenedataTaskinfo(request *QueryScenedataTaskinfoRequ
 	return _result, _err
 }
 
-/**
- * Description: 通过批次号查询任务详细信息
- * Summary: 通过批次号查询任务详细信息
- */
+// Description:
+//
+// Description: 通过批次号查询任务详细信息
+//
+// Summary: 通过批次号查询任务详细信息
 func (client *Client) QueryScenedataTaskinfoEx(request *QueryScenedataTaskinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryScenedataTaskinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2528,10 +3003,11 @@ func (client *Client) QueryScenedataTaskinfoEx(request *QueryScenedataTaskinfoRe
 	return _result, _err
 }
 
-/**
- * Description: 批次计算结果聚合，任务为ready状态时，返回分页列表数据
- * Summary: 批次结果聚合查询
- */
+// Description:
+//
+// Description: 批次计算结果聚合，任务为ready状态时，返回分页列表数据
+//
+// Summary: 批次结果聚合查询
 func (client *Client) QueryScenedataDws(request *QueryScenedataDwsRequest) (_result *QueryScenedataDwsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2544,10 +3020,11 @@ func (client *Client) QueryScenedataDws(request *QueryScenedataDwsRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 批次计算结果聚合，任务为ready状态时，返回分页列表数据
- * Summary: 批次结果聚合查询
- */
+// Description:
+//
+// Description: 批次计算结果聚合，任务为ready状态时，返回分页列表数据
+//
+// Summary: 批次结果聚合查询
 func (client *Client) QueryScenedataDwsEx(request *QueryScenedataDwsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryScenedataDwsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2562,10 +3039,11 @@ func (client *Client) QueryScenedataDwsEx(request *QueryScenedataDwsRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
- * Summary: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
- */
+// Description:
+//
+// Description: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
+//
+// Summary: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
 func (client *Client) QueryFavorStocks(request *QueryFavorStocksRequest) (_result *QueryFavorStocksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2578,10 +3056,11 @@ func (client *Client) QueryFavorStocks(request *QueryFavorStocksRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
- * Summary: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
- */
+// Description:
+//
+// Description: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
+//
+// Summary: 微信批次分页条件查询。通过此接口可查询商家多个批次的信息，包括批次的配置信息以及批次概况数据。
 func (client *Client) QueryFavorStocksEx(request *QueryFavorStocksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryFavorStocksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2596,10 +3075,11 @@ func (client *Client) QueryFavorStocksEx(request *QueryFavorStocksRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 微信核销账单接口
- * Summary: 微信核销账单接口
- */
+// Description:
+//
+// Description: 微信核销账单接口
+//
+// Summary: 微信核销账单接口
 func (client *Client) DownloadStockUseflow(request *DownloadStockUseflowRequest) (_result *DownloadStockUseflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2612,10 +3092,11 @@ func (client *Client) DownloadStockUseflow(request *DownloadStockUseflowRequest)
 	return _result, _err
 }
 
-/**
- * Description: 微信核销账单接口
- * Summary: 微信核销账单接口
- */
+// Description:
+//
+// Description: 微信核销账单接口
+//
+// Summary: 微信核销账单接口
 func (client *Client) DownloadStockUseflowEx(request *DownloadStockUseflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DownloadStockUseflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2630,10 +3111,11 @@ func (client *Client) DownloadStockUseflowEx(request *DownloadStockUseflowReques
 	return _result, _err
 }
 
-/**
- * Description: 微信退款账单接口
- * Summary: 微信退款账单接口
- */
+// Description:
+//
+// Description: 微信退款账单接口
+//
+// Summary: 微信退款账单接口
 func (client *Client) DownloadStockRefundflow(request *DownloadStockRefundflowRequest) (_result *DownloadStockRefundflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2646,10 +3128,11 @@ func (client *Client) DownloadStockRefundflow(request *DownloadStockRefundflowRe
 	return _result, _err
 }
 
-/**
- * Description: 微信退款账单接口
- * Summary: 微信退款账单接口
- */
+// Description:
+//
+// Description: 微信退款账单接口
+//
+// Summary: 微信退款账单接口
 func (client *Client) DownloadStockRefundflowEx(request *DownloadStockRefundflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DownloadStockRefundflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2664,10 +3147,11 @@ func (client *Client) DownloadStockRefundflowEx(request *DownloadStockRefundflow
 	return _result, _err
 }
 
-/**
- * Description: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
- * Summary: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
- */
+// Description:
+//
+// Description: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
+//
+// Summary: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
 func (client *Client) UpdateScenedataTask(request *UpdateScenedataTaskRequest) (_result *UpdateScenedataTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2680,10 +3164,11 @@ func (client *Client) UpdateScenedataTask(request *UpdateScenedataTaskRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
- * Summary: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
- */
+// Description:
+//
+// Description: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
+//
+// Summary: 【任务修改】修改任务状态，上线的任务可以下线，下线后能够修改任务的动态参数，下线后才能再上线。
 func (client *Client) UpdateScenedataTaskEx(request *UpdateScenedataTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateScenedataTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2698,10 +3183,83 @@ func (client *Client) UpdateScenedataTaskEx(request *UpdateScenedataTaskRequest,
 	return _result, _err
 }
 
-/**
- * Description: 创建HTTP PUT提交的文件上传
- * Summary: 文件上传创建
- */
+// Description:
+//
+// Description: 传入用户标识，获取上传行为日志的token
+//
+// Summary: 传入用户标识，获取上传行为日志的token
+func (client *Client) GetTrackingToken(request *GetTrackingTokenRequest) (_result *GetTrackingTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrackingTokenResponse{}
+	_body, _err := client.GetTrackingTokenEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 传入用户标识，获取上传行为日志的token
+//
+// Summary: 传入用户标识，获取上传行为日志的token
+func (client *Client) GetTrackingTokenEx(request *GetTrackingTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrackingTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetTrackingTokenResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("antchain.sds.tracking.token.get"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 传入渠道、用户id，获取用户在该渠道的标签
+//
+// Summary: 传入渠道、用户id，获取用户在该渠道的标签
+func (client *Client) QueryUserTag(request *QueryUserTagRequest) (_result *QueryUserTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryUserTagResponse{}
+	_body, _err := client.QueryUserTagEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 传入渠道、用户id，获取用户在该渠道的标签
+//
+// Summary: 传入渠道、用户id，获取用户在该渠道的标签
+func (client *Client) QueryUserTagEx(request *QueryUserTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryUserTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryUserTagResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("antchain.sds.user.tag.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 创建HTTP PUT提交的文件上传
+//
+// Summary: 文件上传创建
 func (client *Client) CreateAntcloudGatewayxFileUpload(request *CreateAntcloudGatewayxFileUploadRequest) (_result *CreateAntcloudGatewayxFileUploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2714,10 +3272,11 @@ func (client *Client) CreateAntcloudGatewayxFileUpload(request *CreateAntcloudGa
 	return _result, _err
 }
 
-/**
- * Description: 创建HTTP PUT提交的文件上传
- * Summary: 文件上传创建
- */
+// Description:
+//
+// Description: 创建HTTP PUT提交的文件上传
+//
+// Summary: 文件上传创建
 func (client *Client) CreateAntcloudGatewayxFileUploadEx(request *CreateAntcloudGatewayxFileUploadRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAntcloudGatewayxFileUploadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
